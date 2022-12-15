@@ -1,14 +1,20 @@
+import styled from "styled-components";
 import Tab from "./Tab";
+
+const TabBarStyle = styled.div`
+  display: flex;
+  column-gap: 24px;
+`;
 
 function TabBar() {
   return (
-    <div>
+    <TabBarStyle>
       <Tab />
       <Tab />
       <Tab />
       <Tab />
       <Tab />
-    </div>
+    </TabBarStyle>
   );
 }
 
