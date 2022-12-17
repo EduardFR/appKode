@@ -1,4 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { fetchUsers } from "../asyncAction/users";
 import Avatar from "./Avatar";
 
 const HomePageProfileStyle = styled.div`
@@ -20,14 +22,30 @@ const TagStyle = styled.p`
 `;
 
 function HomePageProfile() {
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.users.users);
+  console.log(users);
+
+  dispatch(fetchUsers());
+
   return (
-    <HomePageProfileStyle>
-      <Avatar />
-      <NameStyle>
-        Имя Фамилия
-        <TagStyle>tag</TagStyle>
-      </NameStyle>
-    </HomePageProfileStyle>
+    <>
+      {users.length > 0 ? (
+        <>
+          {users.map((user) => (
+            <HomePageProfileStyle key={user.id}>
+              <Avatar url={user.avatarUrl} />
+              <NameStyle>
+                {user.firstName} {user.lastName}
+                <TagStyle>{user.userTag}</TagStyle>
+              </NameStyle>
+            </HomePageProfileStyle>
+          ))}
+        </>
+      ) : (
+        <div>пусто</div>
+      )}
+    </>
   );
 }
 

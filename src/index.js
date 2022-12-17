@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import styled, { createGlobalStyle } from "styled-components";
+import { Provider } from "react-redux";
+import { store } from "./components/store";
 
 const Global = createGlobalStyle`
 *{
@@ -12,10 +14,13 @@ const Global = createGlobalStyle`
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 `;
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
-    <Global />
-    <App />
+    <Provider store={store}>
+      <Global />
+      <App />
+    </Provider>
   </>
 );

@@ -4,6 +4,7 @@ import Tab from "./Tab";
 const TabBarStyle = styled.div`
   display: flex;
   column-gap: 24px;
+  margin-left: 16px;
 `;
 
 function TabBar() {
