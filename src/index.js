@@ -9,7 +9,6 @@ const Global = createGlobalStyle`
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }

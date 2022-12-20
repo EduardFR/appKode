@@ -8,8 +8,8 @@ const AvatarStyle = styled.img`
 function Avatar({ url }) {
   return (
     <AvatarStyle
-      width="100"
-      height="100"
+      width="72"
+      height="72"
       src={url}
       alt=""
       className=""

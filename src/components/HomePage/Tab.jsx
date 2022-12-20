@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const TabStyle = styled.button`
+  padding-bottom: 5px;
   font-weight: 500;
   font-size: 15px;
   line-height: 20px;
@@ -12,12 +13,21 @@ const TabStyle = styled.button`
     color: black;
   }
   &.active {
-    text-decoration: underline #6534ff;
+    color: black;
+    border-bottom: solid #6534ff 2px;
   }
 `;
 
-function Tab() {
-  return <TabStyle>Кнопка</TabStyle>;
+function Tab({ onClick, name, active, id }) {
+  return (
+    <TabStyle
+      disabled={active.selectedTab === id}
+      className={active.selectedTab === id ? "active" : ""}
+      onClick={onClick}
+    >
+      {name}
+    </TabStyle>
+  );
 }
 
 export default Tab;
