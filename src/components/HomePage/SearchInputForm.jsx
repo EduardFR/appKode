@@ -20,6 +20,7 @@ const ListBoxStyle = styled.div`
 
 const SearchInputStyle = styled.div`
   display: flex;
+
   margin-left: 16px;
   margin-right: 16px;
   background-color: #f7f7f8;

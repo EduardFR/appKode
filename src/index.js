@@ -7,10 +7,10 @@ import { store } from "./components/store";
 
 const Global = createGlobalStyle`
 *{
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
     margin: 0;
     padding: 0;
-    font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 `;
 

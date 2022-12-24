@@ -1,6 +1,7 @@
 import { addManyUsersAction } from "../store/usersReducer";
 
-export const fetchUsers = (example) => {
+export const fetchUsers = (example = "all") => {
+  console.log(example);
   return function (dispatch) {
     const options = {
       method: "GET",

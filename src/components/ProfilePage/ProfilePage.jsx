@@ -12,10 +12,12 @@ const ProfileBorderStyle = styled.div``;
 function ProfilePage() {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users.users);
+  const selectedTab = useSelector((state) => state.selectedTab.selectedTab);
+
   let { id } = useParams();
 
   useEffect(() => {
-    dispatch(fetchUsers("all"));
+    dispatch(fetchUsers(selectedTab));
   }, []);
 
   const filterUsers = users.filter((user) => user.id.match(id));

@@ -17,17 +17,17 @@ function HomePageProfileList() {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users.users);
   const searchInput = useSelector((state) => state.searchInput.value);
+  const selectedTab = useSelector((state) => state.selectedTab.selectedTab);
   const value = useSelector((state) => state.popup.value);
 
   const sortUsersName = _.sortBy(users, ["firstName", "lastName"]);
   const sortUsersbirthbay = _.sortBy(users, ["birthday"]);
 
   let sortUsers = [];
-  {
-    value === "alphabet"
-      ? (sortUsers = sortUsersName)
-      : (sortUsers = sortUsersbirthbay);
-  }
+
+  value === "alphabet"
+    ? (sortUsers = sortUsersName)
+    : (sortUsers = sortUsersbirthbay);
 
   const filterUsers = sortUsers.filter(
     (user) =>
@@ -37,7 +37,7 @@ function HomePageProfileList() {
   );
 
   useEffect(() => {
-    dispatch(fetchUsers("all"));
+    dispatch(fetchUsers(selectedTab));
   }, []);
 
   return (

@@ -1,5 +1,18 @@
 import styled from "styled-components";
 import ProfileAvatar from "./ProfileAvatar";
+import { ReactComponent as Back } from "../../assets/Back.svg";
+import { NavLink } from "react-router-dom";
+
+const BackStyle = styled(Back)`
+  position: absolute;
+  top: 30px;
+  left: 33px;
+  font-size: 50px;
+`;
+
+const LinkStyle = styled(NavLink)`
+  text-decoration: none;
+`;
 
 const PrifileHeaderStyle = styled.div`
   display: flex;
@@ -39,6 +52,9 @@ const DepartmentStyle = styled.div`
 function ProfileHeader({ url, firstName, lastName, tag, department }) {
   return (
     <PrifileHeaderStyle>
+      <LinkStyle to={"/"}>
+        <BackStyle />
+      </LinkStyle>
       <ProfileAvatar url={url} />
       <NameStyle>
         {firstName} {lastName}
