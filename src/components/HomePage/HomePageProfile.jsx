@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as SearchMagnifer } from "../../assets/magnifying.svg";
 import Avatar from "./Avatar";
@@ -9,8 +10,11 @@ const HomePageProfileStyle = styled.div`
 const NoUsersPageStyle = styled.div`
   display: flex;
   flex-direction: column;
-
   margin: 140px auto 0;
+`;
+
+const LinkStyle = styled(NavLink)`
+  text-decoration: none;
 `;
 
 const NoUsersMagnifer = styled(SearchMagnifer)`
@@ -71,17 +75,19 @@ function HomePageProfile({ users }) {
       {users.length > 0 ? (
         <>
           {users.map((user) => (
-            <HomePageProfileStyle key={user.id}>
-              <Avatar url={user.avatarUrl} />
-              <UserStyle>
-                <NameStyle>
-                  {user.firstName} {user.lastName}
-                  <TagStyle>{user.userTag}</TagStyle>
-                </NameStyle>
+            <LinkStyle key={user.id} to={`/profile/${user.id}`}>
+              <HomePageProfileStyle key={user.id}>
+                <Avatar url={user.avatarUrl} />
+                <UserStyle>
+                  <NameStyle>
+                    {user.firstName} {user.lastName}
+                    <TagStyle>{user.userTag}</TagStyle>
+                  </NameStyle>
 
-                <DepartmentStyle>{user.department}</DepartmentStyle>
-              </UserStyle>
-            </HomePageProfileStyle>
+                  <DepartmentStyle>{user.department}</DepartmentStyle>
+                </UserStyle>
+              </HomePageProfileStyle>
+            </LinkStyle>
           ))}
         </>
       ) : (

@@ -13,7 +13,7 @@ function App() {
       <AppWrapper>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="profile" element={<ProfilePage />} />
+          <Route path="profile/:id" element={<ProfilePage />} />
         </Routes>
       </AppWrapper>
     </BrowserRouter>

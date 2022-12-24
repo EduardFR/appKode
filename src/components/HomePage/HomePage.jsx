@@ -1,16 +1,19 @@
 import HomePageHeader from "./HomePageHeader";
 import HomePageProfileList from "./HomePageProfileList";
 import styled from "styled-components";
+import SortPopup from "./SortPopup";
+import { useSelector } from "react-redux";
 
 const HomeStyle = styled.div`
-  max-width: 85%;
-  margin: 30px auto 0;
-  border-radius: 20px;
+  padding-bottom: 22px;
 `;
 
 function HomePage() {
+  const toggle = useSelector((state) => state.popup.toggle);
+
   return (
     <HomeStyle>
+      {toggle === true ? <SortPopup /> : ""}
       <HomePageHeader />
       <HomePageProfileList />
     </HomeStyle>

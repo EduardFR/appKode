@@ -8,24 +8,33 @@ const HomePageProfileListStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 22px 16px;
+  margin: 22px 16px 0;
   row-gap: 20px;
 `;
 
 function HomePageProfileList() {
+  const _ = require("lodash");
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users.users);
   const searchInput = useSelector((state) => state.searchInput.value);
-  // console.log(users.map((user) => user));
-  // console.log(searchInput.value);
-  const filterUsers = users.filter(
+  const value = useSelector((state) => state.popup.value);
+
+  const sortUsersName = _.sortBy(users, ["firstName", "lastName"]);
+  const sortUsersbirthbay = _.sortBy(users, ["birthday"]);
+
+  let sortUsers = [];
+  {
+    value === "alphabet"
+      ? (sortUsers = sortUsersName)
+      : (sortUsers = sortUsersbirthbay);
+  }
+
+  const filterUsers = sortUsers.filter(
     (user) =>
       user.firstName.toLowerCase().match(searchInput.toLowerCase()) ||
       user.lastName.toLowerCase().match(searchInput.toLowerCase()) ||
       user.userTag.toLowerCase().match(searchInput.toLowerCase())
   );
-
-  console.log(filterUsers);
 
   useEffect(() => {
     dispatch(fetchUsers("all"));

@@ -1,7 +1,9 @@
 import { SlMagnifier } from "react-icons/sl";
-import { ReactComponent as ListUI } from "../../assets/Vector.svg";
+import { ReactComponent as ListUI } from "../../assets/ListUI.svg";
 import styled from "styled-components";
 import SearchInput from "./SearchInput";
+import { useDispatch } from "react-redux";
+import { toggleTrueFalseAction } from "../store/popupReducer";
 
 const ListStyle = styled(ListUI)`
   fill: #c3c3c6;
@@ -31,13 +33,15 @@ const Magnifier = styled.div`
 `;
 
 function SearchInputForm() {
+  const dispatch = useDispatch();
+
   return (
     <SearchInputStyle>
       <Magnifier>
         <SlMagnifier />
       </Magnifier>
       <SearchInput />
-      <ListBoxStyle>
+      <ListBoxStyle onClick={() => dispatch(toggleTrueFalseAction(true))}>
         <ListStyle />
       </ListBoxStyle>
     </SearchInputStyle>
