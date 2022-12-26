@@ -1,38 +1,229 @@
-# React Project for the React Course
+# Привет!
 
-## Available Scripts
+Это тестовое задание на стажировку в KODE. Набор на стажировку уже закончился, но сделать приложение в качестве практики для своего GitHub всё ещё можно.
 
-In the project directory, you can run:
+Удачи!
 
-### `npm start`
+## Что нужно сделать
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+В качестве тестового задания мы предлагаем тебе реализовать небольшое приложение, в котором есть всего по чуть-чуть: вёрстки, работы с API, преобразования данных и т. д.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Какие требования к процессу и результату
 
-### `npm test`
+Первое, что нужно сделать — это прочитать и разобраться во всех требованиях, дизайне и API, указанных в этом документе.
+Затем разбить проект на отдельные задачи, то есть декомпозировать.
+После планирования можно переходить к программированию.
+Двигаясь по собственному плану, реализуй тестовое задание.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Обязательный стэк
 
-### `npm run build`
+- Create React App
+- React Router
+- Axios
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Рекомендуется дополнительно использовать
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Typescript
+- Effector \ redux
+- styled-components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> - Рекомендованный стэк не ограничивает тебя по применению других технологий и библиотек.
 
-### `npm run eject`
+## Дизайн
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Хороший дизайн для клиентского разработчика — отличный способ быстро понять, что предстоит сделать. Не забываем, что вёрстка должна быть адаптивной!
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[https://www.figma.com/file/GRRKONipVClULsfdCAuVs1/KODE-Trainee-Dev-Осень'21?node-id=11%3A14414](https://www.figma.com/file/GRRKONipVClULsfdCAuVs1/KODE-Trainee-Dev-%D0%9E%D1%81%D0%B5%D0%BD%D1%8C'21?node-id=11%3A14414)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## API
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Спецификация метода API - [https://kode-frontend-team.stoplight.io/docs/koder-stoplight/e981f97438300-get-users-list](https://kode-frontend-team.stoplight.io/docs/koder-stoplight/e981f97438300-get-users-list)
+
+### Получить всех пользователей
+
+```javascript
+const options = {
+  method: "GET",
+  headers: { "Content-Type": "application/json" },
+};
+fetch(
+  "https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/users?__example=all",
+  options
+)
+  .then((response) => response.json())
+  .then((response) => console.log(response))
+  .catch((err) => console.error(err));
+```
+
+### Получить пользователей определённого департамента
+
+```javascript
+const options = {
+  method: "GET",
+  headers: { "Content-Type": "application/json" },
+};
+fetch(
+  "https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/users?__example=frontend",
+  options
+)
+  .then((response) => response.json())
+  .then((response) => console.log(response))
+  .catch((err) => console.error(err));
+```
+
+> Параметр `__example` может принимать одно из значений:
+> `android` `ios` `design` `management` `qa` `back_office` `frontend` `hr` `pr` `backend` `support` `analytics`
+
+### Пример запроса для тестирования на разных данных (генерируется автоматически при каждом запросе)
+
+```javascript
+const options = {
+  method: "GET",
+  headers: { "Content-Type": "application/json" },
+};
+
+fetch(
+  "https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/users?__dynamic=true",
+  options
+)
+  .then((response) => response.json())
+  .then((response) => console.log(response))
+  .catch((err) => console.error(err));
+```
+
+### Запрос, который вернёт ошибку с http кодом 500
+
+```javascript
+const options = {
+  method: "GET",
+  headers: { "Content-Type": "application/json" },
+};
+fetch(
+  "https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/users?__code=500&__dynamic=true",
+  options
+)
+  .then((response) => response.json())
+  .then((response) => console.log(response))
+  .catch((err) => console.error(err));
+```
+
+## Функциональные требования
+
+### Запуск
+
+Когда пользователь открывает сайт, необходимо загрузить актуальный список всех работников компании.
+
+При входе в приложение необходимо отобразить экран 2.0.0. Изначально он должен быть в состоянии загрузки, экран 1.0.0. Если при загрузке произошла ошибка, отсутствует интернет-соединение или API вернул ошибку, необходимо отобразить экран «Критическая ошибка». В случае успеха необходимо отобразить Top App Bar и список людей.
+
+### Top App Bar
+
+Компонент находится вверху экрана и представляет собой поле для поиска с иконкой «Поиск», кнопкой «Сортировка» и панелью вкладок. При переключении между вкладками на главном экране список работников фильтруется и отображаются только люди, работающие в выбранном департаменте, либо все, если выбрана вкладка «Все».
+
+#### Возможны 2 вида реализации
+
+1. **Простая.** Использовать фильтрацию пользователей на клиенте.
+2. **Чуть сложнее.** Использовать серверную фильтрацию по параметру `__example`
+
+##### Задание со звёздочкой
+
+Рассказать о преимуществах и недостатках способов реализации.
+
+#### Соответствия названия вкладок с полем "department" из запроса API:
+
+```
+android -> Android
+ios -> iOS
+design -> Дизайн
+management -> Менеджмент
+qa -> QA
+back_office -> Бэк-офис
+frontend -> Frontend
+hr -> HR
+pr -> PR
+backend -> Backend
+support -> Техподдержка
+analytics -> Аналитика
+```
+
+При нажатии на кнопку «Фильтр» открывается модальное окно с вариантами сортировки списка работников. Есть два варианта сортировки: «По алфавиту» (по умолчанию), «По дню рождения». При переключении варианта сортировки модальное окно должно закрываться, а список на главной странице должен обновиться.
+
+Когда пользователь вводит текст в поисковое поле, необходимо фильтровать список на главном экране и отображать только работников, соответствующих параметрам поиска. Поиск может осуществляться по имени, фамилии или никнейму, состоящему из двух символов.
+
+В случае отсутствия результатов поиска необходимо отобразить информацию о том, что ничего не было найдено. Экран "2.0.2Г Люди (Ошибка поиска)"
+
+### Страница «Главная»
+
+На странице должна быть расположена верхняя панель приложения, на которой должны находиться:
+
+- поле для поиска;
+- панель вкладок для группировки загруженного списка пользователей;
+- список работников.
+
+Список должен обновляться каждый раз, когда меняются параметры поиска, обновляется вариант сортировки или пользователь переключает вкладки департаментов.
+
+Пользователь имеет возможность скроллить список работников.
+
+В режиме сортировки «По алфавиту» для каждого работника отображается его фотография, имя, никнейм и департамент.
+
+В режиме сортировки «По дню рождения» список отображается от ближайшей даты дня рождения вниз. Если день рождения следующего работника будет только в следующем году, то необходимо отобразить блок с годом, экран 2.0.1.
+
+Когда пользователь кликнет на человека, необходимо открыть экран информации о человеке (экран «детали»).
+
+##### Задание со звёздочкой
+
+Поиск, обновление списка должно происходить только после того, как пользователь закончил печатать.
+
+### Страница «детали»
+
+Должна быть реализована как отдельный роут в приложении.
+
+Должна быть возможность попасть на страницу по ссылке.
+
+Вверху экрана деталей должна отображаться кнопка назад для навигации на главный экран. Также можно вернуться на главный экран, если нажать кнопку назад в браузере.
+
+В шапке экрана должна отображаться аватарка пользователя, имя, никнейм и название департамента.
+Ниже находится дата рождения и номер телефона. При нажатии на номер телефона необходимо открыть приложение для звонка по номеру.
+
+## Дополнительные задания
+
+Дополнительные задания не обязательны для выполнения, но очень желательны. Если ты не успеваешь — лучше сделать хорошо основную часть. Но если время осталось...
+
+### Реализовать real-time отслеживание состояния сети устройства
+
+При отключении устройства от сети, верхняя панель приложения должна измениться на сообщение об ошибке сети, экран 2.0.0.А — Люди (Ошибка).
+При этом должна остаться возможность пользоваться приложением в offline, теми данными, которые успели загрузится до отключения сети.
+
+При восстановлении доступа к сети:
+
+1. Верхняя панель приложения должна измениться на сообщение о загрузке, экран 2.0.0.А — Люди (Загрузка).
+2. Список на активной вкладке должен обновиться.
+
+### Сохранение состояния фильтрации и поиска
+
+Ожидаемый результат:
+
+- На главном экране выбрана сортировка «по дню рождения».
+- Введена строка поиска.
+- Отображается несколько результатов поиска.
+- Пользователь переходит на экран «детали».
+- Возвращается назад.
+- Состояние поиска и сортировки сохранено.
+
+### Кэширование результатов запроса по различным параметрам
+
+Для запроса пользователей с параметром фильтра результат должен кэшироваться на клиенте на 5 минут.
+
+Ожидаемый результат:
+
+1. Переход на вкладку «Все»
+   - Выполняется запрос без фильтрации.
+2. Переход на вкладку «Дизайн»
+   - Выполняется запрос с фильтрацией по полю department.
+3. Переход на вкладку «Все»
+   - До истечения 5 минут запрос не выполняется, данные отображаются из кэша.
+   - После истечения 5 минут запрос выполняется, отображаются свежие данные.
+4. Повторный переход на вкладку «Дизайн»
+   - До истечения 5 минут запрос не выполняется, данные отображаются из кэша.
+   - После истечения 5 минут запрос выполняется, отображаются свежие данные.
+
+### На этом всё, желаем удачи!
