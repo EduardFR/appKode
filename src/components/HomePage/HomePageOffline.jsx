@@ -22,7 +22,7 @@ const OfflineTextStyle = styled.p`
   font-size: 13px;
   font-weight: 500;
   line-height: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 `;
 
 function HomePageOffline() {
