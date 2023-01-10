@@ -2,7 +2,7 @@ import { applyMiddleware, combineReducers, createStore } from "redux";
 import { usersReducer } from "./usersReducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import { selectedTabReducer } from "./activeReducer";
+import { selectedTabReducer } from "./selectedTabReducer";
 import { searchInputReducer } from "./searchInputReducer";
 import { popupReducer } from "./popupReducer";
 

@@ -2,10 +2,11 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchUsers } from "../asyncAction/users";
+import { fetchUsers } from "../../asyncAction/users";
 
 import ProfileHeader from "./ProfileHeader";
 import ProfileBody from "./ProfileBody";
+import NotFoundProfile from "../NotFoundPage/NotFoundProfile";
 
 const ProfileBorderStyle = styled.div``;
 
@@ -18,10 +19,13 @@ function ProfilePage() {
 
   useEffect(() => {
     dispatch(fetchUsers(selectedTab));
-  }, []);
+  }, [dispatch, selectedTab]);
 
-  const filterUsers = users.filter((user) => user.id.match(id));
-  const user = filterUsers[0];
+  const user = users.find((user) => user.id.match(id));
+
+  if (!user) {
+    return <NotFoundProfile />;
+  }
 
   return (
     <>

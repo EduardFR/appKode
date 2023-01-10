@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { fetchUsers } from "../asyncAction/users";
+import { fetchUsers } from "../../asyncAction/users";
 import HomePageProfile from "./HomePageProfile";
+import _ from "lodash";
 
 const HomePageProfileListStyle = styled.div`
   display: flex;
@@ -13,10 +14,10 @@ const HomePageProfileListStyle = styled.div`
 `;
 
 function HomePageProfileList() {
-  const _ = require("lodash");
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users.users);
   const searchInput = useSelector((state) => state.searchInput.value);
+
   const selectedTab = useSelector((state) => state.selectedTab.selectedTab);
   const value = useSelector((state) => state.popup.value);
 
@@ -38,7 +39,7 @@ function HomePageProfileList() {
 
   useEffect(() => {
     dispatch(fetchUsers(selectedTab));
-  }, []);
+  }, [dispatch, selectedTab]);
 
   return (
     <HomePageProfileListStyle>

@@ -4,28 +4,27 @@ import { ReactComponent as Back } from "../../assets/Back.svg";
 import { NavLink } from "react-router-dom";
 
 const BackStyle = styled(Back)`
-  position: absolute;
-  top: 30px;
-  left: 33px;
   font-size: 50px;
 `;
 
 const LinkStyle = styled(NavLink)`
   text-decoration: none;
+  margin-right: auto;
+  margin-left: 30px;
 `;
 
 const PrifileHeaderStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 72px;
+  padding-top: 22px;
   padding-bottom: 24px;
   background-color: #f7f7f8;
 `;
 
 const TagStyle = styled.div`
   align-self: center;
-  ont-weight: 400;
+  font-weight: 400;
   font-size: 17px;
   line-height: 22px;
   color: #97979b;

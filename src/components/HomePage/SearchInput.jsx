@@ -1,6 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { getSearchValueAction } from "../store/searchInputReducer";
+import { getSearchValueAction } from "../../store/searchInputReducer";
+import { useMemo, useState } from "react";
+import { debounce } from "lodash";
 
 const SearchStyle = styled.input`
   padding: 8px 12px;
@@ -21,14 +23,27 @@ const SearchStyle = styled.input`
 
 function SearchInput() {
   const dispatch = useDispatch();
-  const searchInput = useSelector((state) => state.searchInput.value);
+  const [value, setValue] = useState("");
+
+  const updateSearchValue = useMemo(
+    () =>
+      debounce((e) => {
+        dispatch(getSearchValueAction(e));
+      }, 500),
+    [dispatch]
+  );
+
+  const onChange = (e) => {
+    setValue(e.target.value);
+    updateSearchValue(e.target.value);
+  };
 
   return (
     <SearchStyle
       type="text"
       placeholder="Введите имя, тег, почту..."
-      value={searchInput}
-      onChange={(e) => dispatch(getSearchValueAction(e.target.value))}
+      value={value}
+      onChange={onChange}
     />
   );
 }

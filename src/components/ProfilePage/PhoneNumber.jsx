@@ -6,14 +6,24 @@ const PhoneStyle = styled(PhoneSVG)`
 `;
 
 const PhoneNumberStyle = styled.div`
-  align-self: center;
+  display: flex;
+  align-items: center;
+`;
+
+const PhoneLink = styled.a`
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #050510;
+  text-decoration: none;
+  cursor: pointer;
 `;
 
 function PhoneNumber({ phone }) {
   return (
     <PhoneNumberStyle>
       <PhoneStyle />
-      {phone}
+      <PhoneLink href="#"> {phone} </PhoneLink>
     </PhoneNumberStyle>
   );
 }

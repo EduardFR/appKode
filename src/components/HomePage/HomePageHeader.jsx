@@ -1,10 +1,13 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { fetchUsers } from "../asyncAction/users";
-import { addClassActiveAction } from "../store/activeReducer";
+import { addClassActiveAction } from "../../store/selectedTabReducer";
 import SearchInputForm from "./SearchInputForm";
 import TabBar from "./TabBar";
 import Title from "./Title";
+import { tabs } from "../../helpers/constants/tabs";
+import { fetchUsers } from "../../asyncAction/users";
+import HomePageOffline from "./HomePageOffline";
+import { useEffect, useState } from "react";
 
 const HeaderStyle = styled.div`
   display: flex;
@@ -13,33 +16,6 @@ const HeaderStyle = styled.div`
   row-gap: 20px;
 `;
 
-const tabs = [
-  {
-    key: "all",
-    name: "Все",
-  },
-  {
-    key: "design",
-    name: "Designers",
-  },
-  {
-    key: "analytics",
-    name: "Analysts",
-  },
-  {
-    key: "management",
-    name: "Managers",
-  },
-  {
-    key: "ios",
-    name: "iOS",
-  },
-  {
-    key: "android",
-    name: "Android",
-  },
-];
-
 function HomePageHeader() {
   const dispatch = useDispatch();
   const selectTab = (name) => {
@@ -47,10 +23,34 @@ function HomePageHeader() {
     dispatch(fetchUsers(name));
   };
 
+  let [online, isOnline] = useState(navigator.onLine);
+
+  const setOnline = () => {
+    isOnline(true);
+  };
+  const setOffline = () => {
+    isOnline(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("offline", setOffline);
+    window.addEventListener("online", setOnline);
+
+    return () => {
+      window.removeEventListener("offline", setOffline);
+      window.removeEventListener("online", setOnline);
+    };
+  }, []);
+
   return (
     <HeaderStyle>
-      <Title />
-      <SearchInputForm />
+      {online ? (
+        <>
+          <Title /> <SearchInputForm />
+        </>
+      ) : (
+        <HomePageOffline />
+      )}
       <TabBar obj={tabs} selectTab={selectTab} />
     </HeaderStyle>
   );

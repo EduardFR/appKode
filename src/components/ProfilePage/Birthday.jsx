@@ -1,23 +1,17 @@
 import styled from "styled-components";
 import { ReactComponent as StarSVG } from "../../assets/Star.svg";
+import { formatBirthday } from "../../helpers/formatBirthday";
 
 const StarStyle = styled(StarSVG)`
   margin-right: 14px;
 `;
 
 const BirthdayStyle = styled.div`
-  align-self: center;
+  display: flex;
+  align-items: center;
 `;
 
 function Birthday({ birthday }) {
-  const formatBirthday = (birthday) => {
-    return new Date(birthday).toLocaleString("ru", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
-
   return (
     <BirthdayStyle>
       <StarStyle />

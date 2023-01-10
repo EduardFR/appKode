@@ -3,15 +3,17 @@ import { ReactComponent as ListUI } from "../../assets/ListUI.svg";
 import styled from "styled-components";
 import SearchInput from "./SearchInput";
 import { useDispatch } from "react-redux";
-import { toggleTrueFalseAction } from "../store/popupReducer";
+import { toggleTrueFalseAction } from "../../store/popupReducer";
 
 const ListStyle = styled(ListUI)`
   fill: #c3c3c6;
 `;
 
-const ListBoxStyle = styled.div`
+const ListBoxStyle = styled.button`
   align-self: center;
   padding: 8px 14px;
+  background: none;
+  border: none;
   cursor: pointer;
   &:hover svg {
     fill: #6534ff;

@@ -13,7 +13,7 @@ function HomePage() {
 
   return (
     <HomeStyle>
-      {toggle === true ? <SortPopup /> : ""}
+      {toggle ? <SortPopup /> : ""}
       <HomePageHeader />
       <HomePageProfileList />
     </HomeStyle>

@@ -10,16 +10,7 @@ const AvatarStyle = styled.img`
 `;
 
 function Avatar({ url }) {
-  return (
-    <AvatarStyle
-      width="72"
-      height="72"
-      src={url}
-      alt=""
-      className=""
-      loading="lazy"
-    />
-  );
+  return <AvatarStyle width="72" height="72" src={url} alt="" loading="lazy" />;
 }
 
 export default Avatar;

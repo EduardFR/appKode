@@ -2,7 +2,7 @@ import styled from "styled-components";
 import RadioGroup from "./RadioGroup";
 import { ReactComponent as ExitSVG } from "../../assets/ExitSVG.svg";
 import { useDispatch } from "react-redux";
-import { toggleTrueFalseAction } from "../store/popupReducer";
+import { toggleTrueFalseAction } from "../../store/popupReducer";
 
 const ExitSvgStyle = styled(ExitSVG)`
   padding: 6px;

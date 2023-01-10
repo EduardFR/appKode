@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {
   sortRadioValueAction,
   toggleTrueFalseAction,
-} from "../store/popupReducer";
+} from "../../store/popupReducer";
 
 const RadioGroupStyle = styled.div`
   display: flex;

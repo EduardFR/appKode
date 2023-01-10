@@ -1,12 +1,17 @@
-function pluralize(count, words) {
-  var cases = [2, 0, 1, 1, 1, 2];
-  return (
-    count +
-    " " +
-    words[
-      count % 100 > 4 && count % 100 < 20 ? 2 : cases[Math.min(count % 10, 5)]
-    ]
-  );
-}
+const pluralize = (n, one, few, many) => {
+  const selectedRule = new Intl.PluralRules("ru-RU").select(n);
+
+  switch (selectedRule) {
+    case "one": {
+      return one;
+    }
+    case "few": {
+      return few;
+    }
+    default: {
+      return many;
+    }
+  }
+};
 
 export default pluralize;

@@ -7,15 +7,13 @@ const YearsOldStyle = styled.div`
 
 function YearsOld({ birthday }) {
   const formatBirthday = (birthday) => {
-    const year = new Date(birthday).toLocaleString("ru", {
-      year: "numeric",
-    });
-    return 2022 - year;
+    return 2022 - new Date(birthday).getFullYear();
   };
 
   return (
     <YearsOldStyle>
-      {pluralize(formatBirthday(birthday), ["год", "года", "лет"])}
+      {formatBirthday(birthday)}{" "}
+      {pluralize(formatBirthday(birthday), "год", "года", "лет")}
     </YearsOldStyle>
   );
 }
