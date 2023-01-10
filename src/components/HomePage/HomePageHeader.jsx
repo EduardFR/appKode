@@ -5,7 +5,6 @@ import SearchInputForm from "./SearchInputForm";
 import TabBar from "./TabBar";
 import Title from "./Title";
 import { tabs } from "../../helpers/constants/tabs";
-import { fetchUsers } from "../../asyncAction/users";
 import HomePageOffline from "./HomePageOffline";
 import { useEffect, useState } from "react";
 
@@ -20,7 +19,6 @@ function HomePageHeader() {
   const dispatch = useDispatch();
   const selectTab = (name) => {
     dispatch(addClassActiveAction(name));
-    dispatch(fetchUsers(name));
   };
 
   let [online, isOnline] = useState(navigator.onLine);

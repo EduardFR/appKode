@@ -5,7 +5,6 @@ export const fetchUsers = (example = "all") => {
   return async (dispatch) => {
     if (window.navigator.onLine) {
       let cache = JSON.parse(localStorage.getItem("users_" + example));
-
       if (cache && new Date().getTime() <= cache.expiry) {
         let cachedUser = cache.data;
 

@@ -7,6 +7,13 @@ const TabBarStyle = styled.div`
   display: flex;
   column-gap: 24px;
   margin-left: 28px;
+  padding-right: 28px;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 function TabBar({ obj, selectTab }) {
