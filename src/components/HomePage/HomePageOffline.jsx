@@ -17,8 +17,8 @@ const OfflineTitleStyle = styled.h1`
 `;
 
 const OfflineTextStyle = styled.p`
+  text-align: left;
   margin-left: 24px;
-  margin-right: auto;
   font-size: 13px;
   font-weight: 500;
   line-height: 16px;

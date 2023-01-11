@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { toggleTrueFalseAction } from "../../store/popupReducer";
 
 const ExitSvgStyle = styled(ExitSVG)`
+  margin-left: auto;
   padding: 6px;
   background-color: #f7f7f8;
   border-radius: 50%;
@@ -24,18 +25,22 @@ const FoggingStyle = styled.div`
 `;
 
 const PopupText = styled.div`
-  display: inline-block;
-  margin-right: 80px;
+  margin-left: auto;
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
 `;
 
+const PopupHeaderStyle = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 const SortPopupStyle = styled.div`
   display: inline-block;
   position: relative;
-  text-align: right;
-  width: 331px;
+  width: 20%;
+  min-width: 300px;
   top: calc(50% - 192px / 2);
   border-radius: 20px;
   padding: 24px 23px 28px 18px;
@@ -48,8 +53,12 @@ function SortPopup() {
   return (
     <FoggingStyle>
       <SortPopupStyle>
-        <PopupText>Сортировка</PopupText>
-        <ExitSvgStyle onClick={() => dispatch(toggleTrueFalseAction(false))} />
+        <PopupHeaderStyle>
+          <PopupText>Сортировка</PopupText>
+          <ExitSvgStyle
+            onClick={() => dispatch(toggleTrueFalseAction(false))}
+          />
+        </PopupHeaderStyle>
         <RadioGroup />
       </SortPopupStyle>
     </FoggingStyle>
