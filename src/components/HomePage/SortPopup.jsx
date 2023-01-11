@@ -39,8 +39,7 @@ const PopupHeaderStyle = styled.div`
 const SortPopupStyle = styled.div`
   display: inline-block;
   position: relative;
-  width: 20%;
-  min-width: 300px;
+  min-width: 330px;
   top: calc(50% - 192px / 2);
   border-radius: 20px;
   padding: 24px 23px 28px 18px;
