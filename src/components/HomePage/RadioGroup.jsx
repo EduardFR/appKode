@@ -15,6 +15,7 @@ const RadioGroupStyle = styled.div`
 
 const RadioLabelStyle = styled.label`
   display: flex;
+  align-items: center;
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
@@ -26,15 +27,23 @@ const RadioButtonStyle = styled.input`
   margin-right: 14px;
   border: 2px solid #6534ff;
   border-radius: 50%;
-  padding: 10px;
+  padding: 6px;
+
+  ::after {
+    content: "";
+    display: block;
+    border-radius: 50%;
+    background-color: white;
+    padding: 4px;
+  }
 
   &:hover {
-    outline: 8px solid #6534ff;
-    outline-offset: -8px;
+    padding: 6px;
+    background-color: #6534ff;
   }
   &:checked {
-    outline: 8px solid #6534ff;
-    outline-offset: -8px;
+    padding: 6px;
+    background-color: #6534ff;
   }
 `;
 

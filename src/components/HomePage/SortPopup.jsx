@@ -6,7 +6,6 @@ import { toggleTrueFalseAction } from "../../store/popupReducer";
 
 const ExitSvgStyle = styled(ExitSVG)`
   padding: 6px;
-  margin-left: 80px;
   background-color: #f7f7f8;
   border-radius: 50%;
   cursor: pointer;
@@ -26,15 +25,17 @@ const FoggingStyle = styled.div`
 
 const PopupText = styled.div`
   display: inline-block;
-  margin-left: 120px;
+  margin-right: 80px;
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
 `;
 
 const SortPopupStyle = styled.div`
-  position: absolute;
-  left: calc(50% - 373px / 2 + 0.5px);
+  display: inline-block;
+  position: relative;
+  text-align: right;
+  width: 331px;
   top: calc(50% - 192px / 2);
   border-radius: 20px;
   padding: 24px 23px 28px 18px;
